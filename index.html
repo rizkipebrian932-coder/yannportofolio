@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rizki Pebrian — Deadly Sentencing Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+  <canvas id="gavel-canvas"></canvas>
+  <div id="cursor-glow"></div>
+
+  <!-- Top Bar -->
+  <nav class="topbar">
+    <div class="status-pill">
+      <span class="pulse-dot"></span>
+      <span>DEADLY SENTENCING • TANGERANG, ID</span>
+    </div>
+    <div id="live-clock" style="color: var(--muted);">00:00:00 WIB</div>
+    <div class="nav-tabs">
+      <button class="tab-btn active" onclick="filterSection('all', this)">~/case-all</button>
+      <button class="tab-btn" onclick="filterSection('about', this)">~/profile</button>
+      <button class="tab-btn" onclick="filterSection('projects', this)">~/evidence</button>
+    </div>
+  </nav>
+
+  <!-- Main Bento Dashboard -->
+  <main class="container">
+
+    <!-- ==================== BAGIAN 1: PROFIL & TERMINAL ==================== -->
+    <div class="card col-8 filter-item about" style="display: flex; flex-direction: column; justify-content: center;">
+      <div class="hero-title">
+        <div class="domain-tag">
+          <i class="fas fa-scale-balanced"></i> 領域展開・誅伏賜死 // DEADLY SENTENCING
+        </div>
+        <h1>Rizki Pebrian</h1>
+        <div class="typing-line"><span id="typed-text"></span><span class="cursor-blink">&nbsp;</span></div>
+      </div>
+      <p class="bio-text">
+        Mahasiswa Sistem Informasi yang membangun sistem web terstruktur, desain komunikasi visual, dan tata kelola data presisi. Arahkan kursor atau sentuh fotoku di samping untuk menyingkap aura <strong>Hiromi Higuruma</strong> di baliknya!
+      </p>
+      <div class="action-row">
+        <a href="https://wa.me/6285177856423" target="_blank" class="btn btn-gold">
+          <i class="fas fa-gavel"></i> Ajukan Kolaborasi
+        </a>
+        <button class="btn btn-ghost" onclick="copyEmail()">
+          <i class="fas fa-copy"></i> <span id="copy-label">Salin Kontak</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- INTERACTIVE SPOTLIGHT / TOUCH REVEAL CARD (Rasio 9:16) -->
+    <div class="card col-4 higuruma-card filter-item about">
+      <div class="reveal-header">
+        <span style="color: var(--gold);"><i class="fas fa-eye"></i> SENTUH / GESER</span>
+        <span id="mode-status" style="color: var(--muted);">STANDBY</span>
+      </div>
+
+      <div class="spotlight-box" id="spotlight-box" title="Arahkan kursor / sentuh untuk melihat Higuruma, klik 2x untuk mengunci">
+        <img src="yann.jpeg" onerror="this.src='WhatsApp Image 2026-11-15 at 19.43.53.jpeg'" alt="Rizki Pebrian" class="img-base-rizki">
+        <img src="jjk.jpg" alt="Hiromi Higuruma" class="img-reveal-higuruma" id="higuruma-layer">
+        <div class="aura-ring" id="aura-ring"></div>
+        <div class="spotlight-footer">
+          <span class="badge-status" id="verdict-label"><i class="fas fa-gavel"></i> RIZKI.DEV</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Courtroom Terminal Card (6 Kolom) -->
+    <div class="card col-6 filter-item about">
+      <div class="terminal-header">
+        <span class="dot dot-r"></span>
+        <span class="dot dot-y"></span>
+        <span class="dot dot-g"></span>
+        <span style="font-family: 'JetBrains Mono'; font-size: 0.74rem; color: var(--muted); margin-left: 0.4rem;">higuruma@judgeman:~</span>
+      </div>
+      <div class="terminal-body">
+        <div id="terminal-output">
+          <div style="color: var(--gold);">Ketik: <b>help</b>, <b>domain</b>, <b>normal</b>, atau <b>clear</b></div>
+        </div>
+        <div class="terminal-input-line">
+          <span>§</span>
+          <input type="text" id="cmd-input" placeholder="ketik 'domain' lalu Enter..." autocomplete="off">
+        </div>
+      </div>
+    </div>
+
+    <!-- Tech Stack & Tools (6 Kolom) -->
+    <div class="card col-6 filter-item about" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div style="font-family: 'JetBrains Mono'; font-size: 0.76rem; color: var(--gold); margin-bottom: 0.35rem;">
+          <i class="fas fa-scale-balanced"></i> CURSED TOOLS &amp; TECHNICAL STACK
+        </div>
+        <p style="color: var(--muted); font-size: 0.85rem;">Perangkat lunak dan teknologi utama yang digunakan dalam pengembangan sistem &amp; media.</p>
+      </div>
+      <div class="stack-grid">
+        <div class="stack-pill"><i class="fab fa-html5" style="color:#eab308;"></i> HTML5</div>
+        <div class="stack-pill"><i class="fab fa-css3-alt" style="color:#eab308;"></i> CSS3</div>
+        <div class="stack-pill"><i class="fab fa-js" style="color:#fde047;"></i> JavaScript</div>
+        <div class="stack-pill"><i class="fab fa-python" style="color:#eab308;"></i> Python</div>
+        <div class="stack-pill"><i class="fas fa-palette" style="color:#eab308;"></i> Canva</div>
+        <div class="stack-pill"><i class="fas fa-file-excel" style="color:#eab308;"></i> MS Office</div>
+      </div>
+    </div>
+
+    <!-- ==================== BAGIAN 2: PROJECT TERPISAH ==================== -->
+    <div class="section-divider filter-item projects" id="projects-header">
+      <h2><i class="fas fa-folder-open"></i> EVIDENCE ARCHIVE // SELECTED PROJECTS</h2>
+      <span>KLIK KARTU UNTUK DETAIL ATAU LANGSUNG BUKA PROJECT</span>
+    </div>
+
+    <!-- Project 1 -->
+    <div class="card col-4 project-item filter-item projects" onclick="openModal('Dashboard Portal Kelas SI 1B', 'Platform portal kelas berbasis web dengan struktur organisasi interaktif, jadwal perkuliahan shift pagi/malam, papan pengumuman digital, dan pemutar musik terintegrasi.', ['HTML5', 'CSS Glassmorphism', 'JavaScript'], 'https://link-portal-kelas-kamu.netlify.app')">
+      <div>
+        <div class="project-top">
+          <div class="project-icon"><i class="fas fa-desktop"></i></div>
+          <a href="https://unipisi1b.github.io/class-1b/" target="_blank" onclick="event.stopPropagation()" title="Buka langsung" style="color: var(--gold);">
+            <i class="fas fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+        <h3>Portal Kelas SI 1B</h3>
+        <p>Dashboard interaktif manajemen informasi kelas, jadwal, dan struktur pengurus.</p>
+      </div>
+      <div class="project-actions">
+        <span style="color: var(--gold);">Periksa berkas →</span>
+        <a href="https://unipisi1b.github.io/class-1b/" target="_blank" onclick="event.stopPropagation()" class="direct-visit-link">
+          <i class="fas fa-external-link-alt"></i> Buka
+        </a>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="card col-4 project-item filter-item projects" onclick="openModal('2D Platformer Browser Game', 'Game platformer 2D yang dibangun langsung di atas HTML5 Canvas dengan sistem fisika lompatan, rintangan dinamis, pengelolaan volume audio, serta sprite karakter kustom.', ['HTML5 Canvas', 'JavaScript', 'Game Physics'], 'https://link-game-platformer-kamu.netlify.app')">
+      <div>
+        <div class="project-top">
+          <div class="project-icon" style="color: #fca5a5; background: rgba(220,38,38,0.14);"><i class="fas fa-gamepad"></i></div>
+          <a href="https://goldzuraaa969.github.io/yanngame/" target="_blank" onclick="event.stopPropagation()" title="Mainkan langsung" style="color: #fca5a5;">
+            <i class="fas fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+        <h3>2D Platformer Game</h3>
+        <p>Game aksi berbasis browser dengan kontrol fisika kustom dan rintangan interaktif.</p>
+      </div>
+      <div class="project-actions">
+        <span style="color: #fca5a5;">Periksa berkas →</span>
+        <a href="https://goldzuraaa969.github.io/yanngame/" target="_blank" onclick="event.stopPropagation()" class="direct-visit-link">
+          <i class="fas fa-play"></i> Mainkan
+        </a>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="card col-4 project-item filter-item projects" onclick="openModal('Sistem Arsip & Media Dokumentasi', 'Pengelolaan tim dokumentasi acara, penyuntingan aset visual publikasi media sosial, serta pengorganisasian arsip cloud terstruktur untuk kegiatan organisasi.', ['Canva Design', 'Cloud Archive', 'Media Ops'], 'https://drive.google.com/link-arsip-kamu')">
+      <div>
+        <div class="project-top">
+          <div class="project-icon"><i class="fas fa-folder-open"></i></div>
+          <a href="https://drive.google.com/drive/folders/1u2ftPnicwdMctdWs65h0woKDysSbuBeh" target="_blank" onclick="event.stopPropagation()" title="Buka langsung" style="color: var(--gold);">
+            <i class="fas fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+        <h3>Media &amp; Cloud Archive</h3>
+        <p>Manajemen dokumentasi acara, desain publikasi, dan sistem pengarsipan digital.</p>
+      </div>
+      <div class="project-actions">
+        <span style="color: var(--gold);">Periksa berkas →</span>
+        <a href="https://drive.google.com/drive/folders/1u2ftPnicwdMctdWs65h0woKDysSbuBeh" target="_blank" onclick="event.stopPropagation()" class="direct-visit-link">
+          <i class="fas fa-external-link-alt"></i> Buka
+        </a>
+      </div>
+    </div>
+
+    <!-- ==================== BAGIAN 3: KONTAK & SOSIAL MEDIA ==================== -->
+    <div class="card col-12 filter-item about" style="margin-top: 0.6rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h3 style="font-size: 1.15rem;">Kontak &amp; Yurisdiksi Digital</h3>
+          <p style="color: var(--muted); font-size: 0.88rem;">Pilih saluran komunikasi di bawah untuk terhubung langsung.</p>
+        </div>
+        <div class="social-grid" style="min-width: 320px;">
+          <a href="https://wa.me/6285177856423" target="_blank" class="social-tile">
+            <i class="fab fa-whatsapp" style="color: var(--gold);"></i>
+            <span>WhatsApp</span>
+          </a>
+          <a href="https://www.instagram.com/yann.d.zuraa?lqvp=YW1kdmc1Z3hyYmhw" target="_blank" class="social-tile">
+            <i class="fab fa-instagram" style="color: var(--gold);"></i>
+            <span>Instagram</span>
+          </a>
+          <a href="https://www.tiktok.com/@zuraa.08?_r=1&_t=ZS-9BXM9FP2H3t" target="_blank" class="social-tile">
+            <i class="fab fa-tiktok" style="color: var(--gold);"></i>
+            <span>TikTok</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ==================== FLOATING POP-UP MUSIC WIDGET ==================== -->
+  <div class="floating-music-wrapper">
+    <div class="music-popup-card" id="music-popup" style="width: 310px;">
+      <div style="overflow: hidden; flex: 1;">
+        <div style="font-family: 'JetBrains Mono'; font-size: 0.65rem; color: var(--gold); margin-bottom: 2px;">
+          <i class="fas fa-headphones"></i> PLAYLIST (<span id="track-index">1/2</span>)
+        </div>
+        <div id="track-title" style="font-weight: 700; font-size: 0.86rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+          NIGHT DANCER — imase
+        </div>
+        <div style="font-size: 0.72rem; color: var(--muted);" id="track-status">Dijeda</div>
+      </div>
+
+      <!-- Kontrol Lagu: Prev, Play/Pause, Next -->
+      <div style="display: flex; align-items: center; gap: 0.35rem; flex-shrink: 0;">
+        <button class="play-btn-mini" onclick="prevTrack()" title="Lagu Sebelumnya" style="width: 30px; height: 30px; font-size: 0.75rem;">
+          <i class="fas fa-backward-step"></i>
+        </button>
+        <button class="play-btn-mini" onclick="toggleMusic()" title="Play / Pause">
+          <i class="fas fa-play" id="play-icon"></i>
+        </button>
+        <button class="play-btn-mini" onclick="nextTrack()" title="Lagu Berikutnya" style="width: 30px; height: 30px; font-size: 0.75rem;">
+          <i class="fas fa-forward-step"></i>
+        </button>
+      </div>
+    </div>
+
+    <button class="music-fab" id="music-fab" onclick="toggleMusicPopup()" title="Buka / Tutup Pemutar Musik">
+      <i class="fas fa-compact-disc"></i>
+    </button>
+  </div>
+
+  <!-- Elemen Audio untuk memutar Playlist MP3 -->
+  <audio id="bg-music" src="night-dancer.mp3" preload="auto"></audio>
+  
+  <!-- Modal Detail Proyek -->
+  <div class="modal-overlay" id="project-modal" onclick="closeModal(event)">
+    <div class="modal-box">
+      <button class="close-modal" onclick="document.getElementById('project-modal').classList.remove('open')">&times;</button>
+      <div style="font-family: 'JetBrains Mono'; font-size: 0.74rem; color: var(--gold); margin-bottom: 0.5rem;">EVIDENCE EXHIBIT</div>
+      <h2 id="modal-title" style="margin-bottom: 0.75rem;">Judul Proyek</h2>
+      <p id="modal-desc" style="color: var(--muted); line-height: 1.65; margin-bottom: 1.25rem;">Deskripsi proyek...</p>
+      <div id="modal-tags" class="stack-grid"></div>
+      <div class="modal-footer-action">
+        <button class="btn btn-ghost" onclick="document.getElementById('project-modal').classList.remove('open')">Tutup</button>
+        <a id="modal-link" href="#" target="_blank" class="btn btn-gold">
+          <i class="fas fa-arrow-up-right-from-square"></i> Buka Project
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
